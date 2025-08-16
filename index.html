@@ -107,8 +107,8 @@
 </head>
 
 <body>
-  <!-- 背景视频（默认静音） -->
-  <video id="bgVideo" autoplay loop playsinline muted>
+  <!-- 背景视频（不静音，默认有声音） -->
+  <video id="bgVideo" autoplay loop playsinline>
     <source src="video.mp4" type="video/mp4">
     您的浏览器不支持视频标签。
   </video>
@@ -124,19 +124,12 @@
 
   <script>
     const bgVideo = document.getElementById('bgVideo');
-    const loveAudio = new Audio('love.mp3'); // 自定义音频
-
-    // 视频一开始播放就同步播放音频
-    bgVideo.onplay = () => {
-      loveAudio.play();
-    };
-
+    
     // 静音/取消静音
-function toggleMute() {
-  loveAudio.muted = !loveAudio.muted;
-  document.getElementById('muteBtn').textContent = loveAudio.muted ? '🔇' : '🔊';
-}
-
+    function toggleMute() {
+      bgVideo.muted = !bgVideo.muted;
+      document.getElementById('muteBtn').textContent = bgVideo.muted ? '🔇' : '🔊';
+    }
 
     // SweetAlert 弹窗
     function sh() {
